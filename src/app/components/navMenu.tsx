@@ -15,19 +15,20 @@ export default function NavMenu() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-white shadow-md">
-      <ul className="flex md:justify-center justify-around gap-6 p-4 md:flex-row md:items-center md:static fixed bottom-0 left-0 right-0 bg-white md:bg-transparent">
+    <nav className="bg-white shadow-md border-b">
+      <ul className="flex justify-around md:justify-center gap-6 py-3 md:py-4">
         {menuItems.map((item) => (
           <li key={item.href}>
             <Link
               href={item.href}
-              className={`flex flex-col md:flex-row items-center gap-2 p-2 rounded-lg transition-colors duration-200 ${
-                pathname === item.href
-                  ? "text-blue-600 font-bold"
-                  : "text-gray-700 hover:text-blue-500"
-              }`}
+              className={`flex items-center gap-2 px-3 py-2 transition-colors duration-200 border-b-2
+                ${
+                  pathname === item.href
+                    ? "text-blue-600 border-blue-600 font-semibold"
+                    : "text-gray-700 border-transparent hover:text-blue-500 hover:border-blue-400"
+                }`}
             >
-              <span className="text-lg">{item.icon}</span>
+              <span className="block md:hidden text-lg">{item.icon}</span>
               <span className="text-sm md:text-base">{item.label}</span>
             </Link>
           </li>
