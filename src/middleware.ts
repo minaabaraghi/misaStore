@@ -1,12 +1,16 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+// middleware.ts
+import { NextRequest, NextResponse } from "next/server";
+import { isMobile } from "./lib/isMobile";
 
-// This function can be marked `async` if using `await` inside
-export function middleware(request: NextRequest) {
-  return NextResponse.redirect(new URL("/home", request.url));
+export function middleware(req: NextRequest) {
+  const ua = req.headers.get("user-agent") || "";
+  const device = isMobile(ua) ? "mobile" : "desktop";
+
+  const res = NextResponse.next();
+  res.headers.set("x-device-type", device);
+  return res;
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
-  matcher: "/about/:path*",
+  matcher: ["/", "/((?!_next|favicon.ico).*)"], // روی همه صفحه‌ها اعمال میشه بجز فایلای استاتیک
 };
