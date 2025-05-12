@@ -1,5 +1,5 @@
+"use client";
 import { ClipboardList, LogOut, Signpost, User, Wallet } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,14 +13,26 @@ import {
 import React from "react";
 
 export function DropdownProfile() {
+  const [userName, setUserName] = React.useState<string | null>(null);
+
+  const handleUserIconClick = () => {
+    setUserName(localStorage.getItem("username"));
+  };
+  const handleExit = () => {
+    setUserName("");
+    localStorage.setItem("username", "");
+  };
+
   return (
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline">{<User />}</Button>
+          <Button variant="outline" onPointerDown={handleUserIconClick}>
+            {<User />}
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56 rtl">
-          <DropdownMenuLabel>سارا عزیز</DropdownMenuLabel>
+          <DropdownMenuLabel>{userName} عزیز</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>
@@ -40,10 +52,27 @@ export function DropdownProfile() {
               <span>آدرس ها</span>
             </DropdownMenuItem>
           </DropdownMenuGroup>
-          <DropdownMenuItem>
-            <LogOut />
-            <span>خروج از حساب کاربری</span>
-          </DropdownMenuItem>
+          {userName ? (
+            <DropdownMenuItem>
+              <LogOut />
+              <button
+                type="submit"
+                className="text-right w-full"
+                onClick={handleExit}
+              >
+                خروج از حساب کاربری
+              </button>
+            </DropdownMenuItem>
+          ) : (
+            <DropdownMenuItem>
+              <LogOut />
+              <form action="/login" method="get" className=" w-full">
+                <button type="submit" className="text-right w-full">
+                  ورود یا عضویت
+                </button>
+              </form>
+            </DropdownMenuItem>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
     </>
