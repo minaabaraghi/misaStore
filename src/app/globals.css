@@ -63,6 +63,15 @@
   font-weight: bold;
   margin-top: 5vh;
 }
+.createButton {
+  background-color: #3df562;
+  width: 35vh;
+  height: 5vh;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  margin-top: 1vh;
+}
 
 :root {
   --radius: 0.625rem;
