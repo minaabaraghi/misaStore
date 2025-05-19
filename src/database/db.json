@@ -1,25 +1,46 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Product 1",
-      "description": "Description for Product 1",
-      "price": 10.99,
-      "imageUrl": "https://via.placeholder.com/150"
+      "id": "1",
+      "name": "گوشی موبایل اپل",
+      "description": "گوشی موبایل اپل مدل iPhone 16 CH دو سیم کارت ظرفیت 128 گیگابایت و رم 8 گیگابایت",
+      "price": 84499000,
+      "imageUrl": "/images/apple.jpg",
+      "specifications": {
+        "برند": "اپل",
+        "مدل": "iPhone 16 CH",
+        "سیم کارت": "2",
+        "ظرفیت ذخیره‌سازی": "128 GB",
+        "حافظه": "8 GB"
+      }
     },
     {
-      "id": 2,
-      "name": "Product 2",
-      "description": "Description for Product 2",
-      "price": 20.99,
-      "imageUrl": "https://via.placeholder.com/150"
+      "id": "2",
+      "name": "گوشی موبایل شیائومی",
+      "description": "گوشی موبایل شیائومی مدل Redmi Note 13 4G دو سیم کارت ظرفیت 256 گیگابایت و رم 8 گیگابایت",
+      "price": 13999000,
+      "imageUrl": "/images/shiyami.jpg",
+      "specifications": {
+        "برند": "شیائومی",
+        "مدل": "Redmi Note 13 4G",
+        "سیم کارت": "2",
+        "ظرفیت ذخیره‌سازی": "256 GB",
+        "حافظه": "8 GB"
+      }
     },
     {
-      "id": 3,
-      "name": "Product 3",
-      "description": "Description for Product 3",
-      "price": 30.99,
-      "imageUrl": "https://via.placeholder.com/150"
+      "id": "3",
+      "name": "گوشی موبایل سامسونگ",
+      "description": "گوشی موبایل سامسونگ مدل Galaxy A55 دو سیم کارت ظرفیت 256 گیگابایت و رم 8 گیگابایت - ویتنام",
+      "price": 28999000,
+      "imageUrl": "/images/samsung.jpg",
+      "specifications": {
+        "برند": "سامسونگ",
+        "مدل": "Galaxy A55",
+        "سیم کارت": "2",
+        "ظرفیت ذخیره‌سازی": "256 GB",
+        "حافظه": "8 GB"
+      }
     }
   ],
   "users": [
@@ -32,6 +53,16 @@
       "id": "2",
       "name": "mina",
       "password": "123"
+    },
+    {
+      "id": "ecd3",
+      "name": "sina",
+      "password": "321"
+    },
+    {
+      "id": "472",
+      "name": "ali",
+      "password": "654"
     }
   ]
 }

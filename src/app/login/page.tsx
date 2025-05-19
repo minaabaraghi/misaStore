@@ -2,7 +2,8 @@
 import React from "react";
 import { TailwindButton } from "../../components/ui/tailwindButton";
 import { TailwindInput } from "@/components/ui/tailwindInput";
-import { LoginComponent } from "../components/loginComponent";
+import axios from "axios";
+import { LoginComponent } from "@/components/containters/loginComponent";
 
 export interface IUser {
   name: string;
@@ -22,6 +23,18 @@ export default function Login() {
   }
   const handleLogin = () => {
     getData();
+  };
+  const handleCreateAccount = () => {
+    axios(`http://localhost:3005/users`, {
+      method: "POST",
+      data: {
+        id: Math.floor(Math.random() * 1000).toString(),
+        name: name,
+        password: password,
+      },
+    }).then(() => {
+      alert("حساب کاربری شما با موفقیت ایجاد شد");
+    });
   };
 
   return (
@@ -53,6 +66,13 @@ export default function Login() {
         onClick={handleLogin}
       >
         ورود
+      </TailwindButton>
+      <TailwindButton
+        type="submit"
+        className="createButton"
+        onClick={handleCreateAccount}
+      >
+        عضویت
       </TailwindButton>
     </div>
   );
