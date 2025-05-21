@@ -6,6 +6,7 @@ import { SubmitUser } from "@/lib/actions/login/submitUser";
 import { loginService } from "@/services/loginServices/loginService";
 import { TailwindInput } from "@/components/ui/tailwindInput";
 import { TailwindButton } from "@/components/ui/tailwindButton";
+import { registerService } from "@/services/loginServices/registerService";
 
 const InitialState = {
   zodErrors: null,
@@ -27,19 +28,11 @@ export default function LoginForm() {
 
   const handleCreateAccount = async () => {
     if (name && password) {
-      const res = await fetch("http://localhost:3005/users", {
-        method: "POST",
-        body: JSON.stringify({
-          id: Math.floor(Math.random() * 1000).toString(),
-          name,
-          password,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (res.ok) {
-        alert("حساب کاربری ایجاد شد");
+      try {
+        await registerService({ name, password });
+        alert("حساب کاربری شما با موفقیت ایجاد شد");
+      } catch {
+        alert("خطا در ثبت‌ نام");
       }
     }
   };

@@ -35,6 +35,6 @@ export function SubmitUser(prevState: any, formData: FormData) {
     data: validatedFields.data,
     zodErrors: null,
     strapiErrors: null,
-    message: "ورود با موفقیت انجام شد",
+    message: "عملیات با موفقیت انجام شد",
   };
 }
