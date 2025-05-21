@@ -8,8 +8,12 @@ interface IAddToCartProps {
 }
 
 export function AddCard({ id }: IAddToCartProps) {
-  const { handleIncreaseProduct, handleDecreaseProduct, getProductQty } =
-    useShoppingCartContext();
+  const {
+    handleIncreaseProduct,
+    handleDecreaseProduct,
+    getProductQty,
+    handleDeleteProduct,
+  } = useShoppingCartContext();
   return (
     <div className="flex flex-row gap-5 justify-center items-center mt-4 border-2 border-gray-300 rounded p-1.5">
       <button
@@ -23,7 +27,12 @@ export function AddCard({ id }: IAddToCartProps) {
       {getProductQty(parseInt(id)) == 0 ? (
         ""
       ) : getProductQty(parseInt(id)) == 1 ? (
-        <button className="w-8 h-8 text-gray-500">
+        <button
+          className="w-8 h-8 text-gray-500"
+          onClick={() => {
+            handleDeleteProduct(parseInt(id));
+          }}
+        >
           <DeleteOutlineOutlinedIcon />
         </button>
       ) : (

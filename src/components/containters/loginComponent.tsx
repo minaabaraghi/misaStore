@@ -1,7 +1,11 @@
 import React from "react";
 import Cookie from "js-cookie";
 import { redirect } from "next/navigation";
-import { IUser } from "@/app/login/page";
+
+interface IUser {
+  name: string;
+  password: string;
+}
 
 export async function LoginComponent({ name, password }: IUser) {
   const result = await fetch(`http://localhost:3005/users`);

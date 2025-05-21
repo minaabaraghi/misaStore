@@ -13,6 +13,7 @@ type TShoppingCartContextType = {
   handleIncreaseProduct: (id: number) => void;
   handleDecreaseProduct: (id: number) => void;
   getProductQty: (id: number) => number;
+  handleDeleteProduct: (id: number) => void;
 };
 
 const ShoppingCartContext = createContext({} as TShoppingCartContextType);
@@ -59,6 +60,11 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartContextType) => {
       }
     });
   };
+  const handleDeleteProduct = (id: number) => {
+    setCartItems((currentItems) => {
+      return currentItems.filter((item) => item.id != id);
+    });
+  };
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -74,6 +80,7 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartContextType) => {
         getProductQty,
         handleIncreaseProduct,
         handleDecreaseProduct,
+        handleDeleteProduct,
       }}
     >
       {children}
