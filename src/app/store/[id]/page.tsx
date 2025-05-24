@@ -1,6 +1,8 @@
 import React from "react";
 import { ChooseColor } from "../../../components/containters/chooseColor";
 import { AddCard } from "@/components/containters/addCard";
+import Link from "next/link";
+import Image from "next/image";
 
 interface IProductParams {
   params: Promise<{ id: string }>;
@@ -16,7 +18,7 @@ interface IProduct {
   specifications: string[];
 }
 
-export default async function Product({ params }: IProductParams) {
+export default async function Store({ params }: IProductParams) {
   const { id } = await params;
   const result = await fetch(`http://localhost:3005/products/${id}`);
   const data = (await result.json()) as IProduct;
@@ -28,11 +30,15 @@ export default async function Product({ params }: IProductParams) {
         style={{ height: "60vh" }}
       >
         <div className="col-span-4 items-center w-9/12 h-full border-gray-100 border-2 content-center ">
-          <img
-            src={data.imageUrl!}
-            alt={data.name!}
-            className="w-96 h-auto justify-self-center"
-          />
+          <Link key={id} href={`photos/${id}`}>
+            <Image
+              width={384}
+              height={512}
+              src={data.imageUrl!}
+              alt={data.name!}
+              className="w-96 h-auto justify-self-center"
+            />
+          </Link>
         </div>
         <div className="col-span-6 content-center">
           <h1 className="text-2xl font-bold mb-5">{data.name}</h1>
